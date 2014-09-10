@@ -1,0 +1,96 @@
+/* 
+    Document   : style
+    Created on : 3-giu-2014, 15:01:52
+    Author     : ced
+    Description: 
+*/
+
+/*CLOCK*/
+
+@font-face{
+    font-family: digitalClock;
+    src: url(fonts/TickingTimebombBB.ttf);
+}
+
+@font-face{
+    font-family: fontClockText;
+    src: url(fonts/Movie_Times.ttf);
+}
+
+body {
+    background-image: url("img/bg4.jpg");
+}
+.pen{
+    margin-top: 50px;
+    margin-left: -50px;
+    width: 350px;
+    height: 300px;
+}
+form{
+    text-align: center;
+    margin: 0 auto;
+}
+input{
+    text-align: center;
+    width: 200px;
+    border-right: solid 1px;
+    border-radius: 5px; 
+}
+input[type="submit"]{
+    border-radius: 33px; 
+    -moz-border-radius: 33px; 
+    -webkit-border-radius: 33px; 
+    border: 2px solid #800000;
+}
+input:hover[type="submit"]{
+    background-color: #B2B299; 
+}
+.boxCenter{ 
+    /*background-image: url("img/bg.png");*/
+    background-image: url("img/q.jpg");
+    width: 850px;
+    height: 300px;
+    /*height: 500px;
+    background-color: red;*/
+    border-style: solid;
+    border-width: 5px; 
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.header{
+    width: 850px;
+    height: 100px;
+    /*background-color: #5983FF;*/
+}
+.titleHeader{
+    text-align: center;
+    /*background-color: orange;*/
+    width: 50%;
+    margin: 0 auto;
+    font-family: "Times New Roman";
+    font-size: 25px;
+}
+img{
+    float: left;
+    margin-left: 90px;
+    margin-top: 8px;
+    height: 85px;
+}
+.clockText{
+    font-family: fontClockText;
+    font-size: 600%;
+    color: #603131;
+}
+.readFriends{
+    background-color: transparent;
+    height: 100px;
+    width:50px;
+    font-size: 600%;
+    border-color: transparent;
+    font-family: digitalClock;
+}
+
