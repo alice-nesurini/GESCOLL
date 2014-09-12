@@ -2,27 +2,34 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title></title>
     </head>
     <body>
         <div class="boxCenter">
             <div class="header">
-                <div>
-                    <!--IMG<img class="" src="img/.png"/>-->
+                <div class="imageLogin">
+                    <img src="img/user-login.png" height="70%"/>
                 </div>
                 <div class="titleHeader">
-                    GESCOLL 4AC - SAM - Trevano
-                </div>
-                <div class="titleHeader">
-                    Trevano - Settembre/Ottobre 2014
+                    Login
                 </div>
             </div>
-            <form action="action.php" method="POST">
-               username: <input name="name" type="text"/>
+            <form action="login.php" method="POST">
+               <!--username: <input name="name" type="text"/></BR>
                password: <input name="password" type="password"/>
-               <input type="submit" value="Login"/>
+                <input type="submit" value="Login"/>-->
+                <input type="text" class="form-control" name="name" placeholder="Nickname" style="width:70%;">
+                <input type="password" class="form-control" name="password" placeholder="Password" style="width:70%;">
+                <button type="submit" class="btn btn-default">Login</button>
             </form>
+            <div class="newUser">
+                <div>New User?</div>
+                <form action="register.html" method="POST">
+                    <button type="text" class="btn btn-default">Register</button>
+                </form>
+            </div>
         </div>
     </body>
 </html>

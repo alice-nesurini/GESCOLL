@@ -16,25 +16,16 @@
     font-family: fontClockText;
     src: url(fonts/Movie_Times.ttf);
 }
-
 body {
     background-image: url("img/bg4.jpg");
 }
-.pen{
-    margin-top: 50px;
-    margin-left: -50px;
-    width: 350px;
-    height: 300px;
-}
 form{
-    text-align: center;
-    margin: 0 auto;
+    /*text-align: center;
+    margin: 0 auto;*/
+    margin-left: 30%;
 }
 input{
-    text-align: center;
-    width: 200px;
-    border-right: solid 1px;
-    border-radius: 5px; 
+
 }
 input[type="submit"]{
     border-radius: 33px; 
@@ -48,8 +39,11 @@ input:hover[type="submit"]{
 .boxCenter{ 
     /*background-image: url("img/bg.png");*/
     background-image: url("img/q.jpg");
-    width: 850px;
+    /*width: 850px;*/
+    width:50%;
     height: 300px;
+    /*width:60%;
+    height: 70%;*/
     /*height: 500px;
     background-color: red;*/
     border-style: solid;
@@ -60,37 +54,34 @@ input:hover[type="submit"]{
     left: 0;
     right: 0;
     margin: auto;
+    height: 80%;
 }
 .header{
-    width: 850px;
-    height: 100px;
+    /*width: 850px;
+    height: 100px;*/
     /*background-color: #5983FF;*/
+    height: 30%;
 }
 .titleHeader{
-    text-align: center;
-    /*background-color: orange;*/
+    /*text-align: center;
+    background-color: orange;*/
     width: 50%;
     margin: 0 auto;
     font-family: "Times New Roman";
+    margin-top: 10%;
     font-size: 25px;
 }
-img{
-    float: left;
-    margin-left: 90px;
-    margin-top: 8px;
-    height: 85px;
+.newUser{
+    text-align: right;
+    margin-right: 5%;
 }
-.clockText{
-    font-family: fontClockText;
-    font-size: 600%;
-    color: #603131;
+.imageLogin{
+    /*background-color: orange;*/
+    float:left;
+    height: 100%;
+    margin-left: 2%;
 }
-.readFriends{
-    background-color: transparent;
-    height: 100px;
-    width:50px;
-    font-size: 600%;
-    border-color: transparent;
-    font-family: digitalClock;
+.registerButtons{
+    /*background-color: orange;*/
+    margin-top: -10%;
 }
-
