@@ -1,0 +1,13 @@
+Elenco del percorso delle cartelle
+Numero di serie del volume: 9A73-E479
+C:.
+ÃÄÄÄbootstrap
+³   ÃÄÄÄcss
+³   ÃÄÄÄfonts
+³   ÀÄÄÄjs
+ÃÄÄÄfpdf
+³   ÃÄÄÄdoc
+³   ÃÄÄÄfont
+³   ÃÄÄÄmakefont
+³   ÀÄÄÄtutorial
+ÀÄÄÄimg

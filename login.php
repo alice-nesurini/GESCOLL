@@ -9,32 +9,18 @@
         $conn=mysqli_connect("localhost", "root", "root", "gescoll");
       	$query="SELECT Nickname, Password FROM User";
 		$result=mysqli_query($conn, $query);
+        $logged=0;
 		while($row=mysqli_fetch_array($result)){
 			if($name==$row['Nickname'] && $password==$row['Password']){
                 $_SESSION['name']=$name;
                 $_SESSION['password']=$password;
+                $logged=1;
 				header('Location: panel.php');
 			}
-			else{
-				//session_unset();
-				//session_destroy();
-				//$name="";
-				//$password="";
-                //echo($row['Nickname']." ".$row['Password']."</br>");
-                //echo(mysqli_error($conn));
-				//header('Location: index.html');
-			}
 		}
-        /*if(mysqli_connect_errno()){
-            //header('Location: index.html');
-            echo(mysqli_error($conn));
+        if($logged==0){
+            header("Location: index.html");
         }
-        else{
-            $_SESSION['name']=$name;
-            $_SESSION['password']=$password;
-            echo("?");
-            //header('Location: panel.php'); 
-        }*/
     }
     else{
         header('Location: index.html');
