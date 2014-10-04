@@ -35,6 +35,7 @@ div #container {
     text - align: left;
     width: 700px;
     margin: 0 auto;
+    /*background: GhostWhite;*/
 }
 
 div #content p {

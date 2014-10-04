@@ -6,7 +6,7 @@
 	<body>
 		<center>
 			<div style="margin-top:10%;">
-				<form action="new.php" method="POST">
+				<form action="new.php" method="POST" enctype="multipart/form-data">
 					<input type="text" class="form-control" name="name" placeholder="Name" style="width:50%;">
 					<input type="text" class="form-control" name="description" placeholder="Description" style="width:50%;">
 					<input type="text" class="form-control" name="color" placeholder="Color" style="width:50%;">
@@ -28,6 +28,11 @@
 						}
 						echo("</select>");
 					?>
+					</br></br>
+					<label>Cover: </label><input type="file" name="image"/>
+					</br>
+					</br>
+					<label>Other images (multiple selection): </label><input type="file" name="otherImages[]" multiple="multiple"/>
 					</br>
 			       	<button type="submit" class="btn btn-default">New</button>
 			       	<button type="button" class="btn btn-default" onClick="window.open('panel.php', '_parent')">Cancel</button>

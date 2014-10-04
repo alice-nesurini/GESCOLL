@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	/* Alice Mariotti-Nesurini
-	 * 17.09.14
+	 * Data creazione: 17.09.14
 	 * Visualizzazione oggetti personali
 	 */
 ?>
@@ -10,9 +10,12 @@
 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="style_template.css" rel="stylesheet">
 	</head>
-	<body>
+	<body style='background: #F0FFFF;'>
 		<span style="margin-left: 5%; margin-top: 15%;">
-			My objects
+		</br>
+			<button style="margin-top: 4%;" type="button" class="btn btn-default btn-lg btn-block" onClick="window.open('myCollectionPDF.php', '_parent')">
+				<span class="glyphicon glyphicon-file">My collection</span>
+			</button>
 		</span>
 		<div style="margin-left: 5%; margin-top: 5%;">
 			<?php
@@ -27,8 +30,20 @@
 				$result=mysqli_query($conn, $sql) or die(mysqli_error($conn));
 				echo("<TABLE width=100%>");
 				while($row=mysqli_fetch_array($result)){
+					echo("<tr style='width:5%;'>");
+					$id=$row['Id'];
+					$queryPhoto="SELECT * FROM Photo WHERE Id_Object_Cover='$id'";
+					$resultPhoto=mysqli_query($conn, $queryPhoto) or die(mysqli_error($conn));
+					if(mysqli_num_rows($resultPhoto)==0){
+						echo('<td style="border: 1px solid black; max-width:150px;" rowspan=5>No Image</td>');
+					}
+					while($rowPhoto=mysqli_fetch_array($resultPhoto)){
+						echo('<td style="border: 1px solid black; max-width:145px;" rowspan=5><b><img src="data:image/png;base64,'.base64_encode($rowPhoto['Photo']).'" width="145px"></b></td>');
+					}
+					echo("</tr>");
 					echo("<tr>");
 					echo("<td style='border: 1px solid black;' colspan=2><b>".$row['Name']."</b></td>");
+					echo("<td ><form action='editObjectPage.php' method='POST'><button name='editButton' type='submit' value=".$row['Id']." class='glyphicon glyphicon-edit btn-block'> Edit</button></form></td>");
 					echo("</tr>");
 					echo("<tr>");
 					echo("<td style='border: 1px solid black;' rowspan=2>".$row['Desc']."</td>");
@@ -38,7 +53,7 @@
 					else{
 						echo("<td style='border: 1px solid black;'>Price: ".$row['Price']." fr.-</td>");
 					}
-					echo("<td ><form action='deleteObject.php' method='POST'><button name='submitName' type='submit' value=".$row['Id']." class='glyphicon glyphicon-remove'></button></form></td>");
+					echo("<td ><form action='deleteObject.php' method='POST'><button onclick='return confirm(\"Are you sure you want to delete this item?\");' name='submitName' type='submit' value=".$row['Id']." class='glyphicon glyphicon-remove btn-block'> Remove</button></form></td>");
 					echo("</tr>");
 					echo("<tr>");
 					if($row['Shipping']==0){
@@ -47,7 +62,7 @@
 					else{
 						echo("<td style='border: 1px solid black;'>Shipping: ".$row['Shipping']." fr.-</td>");
 					}
-					echo("<td rowspan=2><form target='_blank' action='pdf.php' method='POST'><button name='pdfButton' type='submit' value=".$row['Id']." class='glyphicon glyphicon-file'></button></form></td>");
+					echo("<td rowspan=2><form target='_blank' action='pdf.php' method='POST'><button name='pdfButton' type='submit' value=".$row['Id']." class='glyphicon glyphicon-file btn-block'> pdf</button></form></td>");
 					echo("</tr>");
 					echo("<tr>");
 					$type=$row['Type'];
@@ -65,7 +80,16 @@
 					}
 					echo("</tr>");
 					echo("<tr>");
-					echo("<td height=10></td>");
+					$queryPhoto="SELECT * FROM Photo WHERE Id_Object='$id'";
+					$resultPhoto=mysqli_query($conn, $queryPhoto) or die(mysqli_error($conn));
+					if(mysqli_num_rows($resultPhoto)==0){
+						echo('<td style="border: 1px solid black; max-width:150px;" colspan=3>No Images</td>');
+					}
+					while($rowPhoto=mysqli_fetch_array($resultPhoto)){
+						echo('<td style="border: 1px solid black;"><b><img src="data:image/png;base64,'.base64_encode($rowPhoto['Photo']).'" width="145px"></b></td>');
+					}
+					echo("</tr><tr>");
+					echo("<td height=50px></td>");
 					echo("</tr>");
 				}
 				echo("</TABLE>");

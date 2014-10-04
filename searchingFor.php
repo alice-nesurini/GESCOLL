@@ -21,6 +21,17 @@
 	$result=mysqli_query($conn, $query);
 	echo("<TABLE width=100%>");
 	while($row=mysqli_fetch_array($result)){
+		echo("<tr style='width:5%;'>");
+		$id=$row['Id'];
+		$queryPhoto="SELECT * FROM Photo WHERE Id_Object_Cover='$id'";
+		$resultPhoto=mysqli_query($conn, $queryPhoto) or die(mysqli_error($conn));
+		if(mysqli_num_rows($resultPhoto)==0){
+			echo('<td style="border: 1px solid black; max-width:150px;" rowspan=5>No Image</td>');
+		}
+		while($rowPhoto=mysqli_fetch_array($resultPhoto)){
+			echo('<td style="border: 1px solid black; max-width:150px;" rowspan=5><b><img src="data:image/png;base64,'.base64_encode($rowPhoto['Photo']).'" width="150px"></b></td>');
+		}
+		echo("</tr>");
 		echo("<tr>");
 		echo("<td style='border: 1px solid black;' colspan=2><b>".$row['Name']."</b></td>");
 		echo("</tr>");
@@ -35,6 +46,7 @@
 		else{
 			echo("<td style='border: 1px solid black;'>Shipping: ".$row['Shipping']." fr.-</td>");
 		}
+		echo("<td rowspan=2 style='visibility:hidden;'><form target='_blank' action='pdf.php' method='POST'><button name='pdfButton' type='submit' value=".$row['Id']." class='glyphicon glyphicon-file'></button></form></td>");
 		echo("</tr>");
 		echo("<tr>");
 		$type=$row['Type'];
@@ -47,7 +59,16 @@
 		echo("<td style='border: 1px solid black;'>Searching for this object</td>");
 		echo("</tr>");
 		echo("<tr>");
-		echo("<td height=10></td>");
+		$queryPhoto="SELECT * FROM Photo WHERE Id_Object='$id'";
+		$resultPhoto=mysqli_query($conn, $queryPhoto) or die(mysqli_error($conn));
+		if(mysqli_num_rows($resultPhoto)==0){
+			echo('<td style="border: 1px solid black; max-width:150px;" colspan=3>No Images</td>');
+		}
+		while($rowPhoto=mysqli_fetch_array($resultPhoto)){
+			echo('<td style="border: 1px solid black;"><b><img src="data:image/png;base64,'.base64_encode($rowPhoto['Photo']).'" width="145px"></b></td>');
+		}
+		echo("</tr><tr>");
+		echo("<td height=50px></td>");
 		echo("</tr>");
 	}
 	echo("</TABLE>");

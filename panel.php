@@ -40,7 +40,7 @@
 				<button type="button" class="btn btn-default btn-lg" onClick="setURL('selling.php')">
 					<span class="glyphicon glyphicon-shopping-cart">Selling</span>
 				</button>
-				<button type="button" class="btn btn-default btn-lg" onClick="setURL('meOptions.php')">
+				<button type="button" class="btn btn-default btn-lg" onClick="setURL('meView.php')">
 					<span class="glyphicon glyphicon-user"><?php echo($name);?></span>
 				</button>
 				<button type="button" class="btn btn-default btn-lg" onClick="window.open('logout.php', '_parent')">
@@ -49,8 +49,11 @@
 			</div>
 			
 			<div id="navigation" style="margin-top:2%;">
-				<button type="submit" class="btn btn-default btn-lg" onClick="setURL('newPage.php')">
+				<button type="submit" class="btn btn-default btn-lg btn-block" onClick="setURL('newPage.php')">
 					<span class="glyphicon glyphicon-upload">New object</span>
+				</button>
+				<button type="submit" class="btn btn-default btn-lg btn-block" onClick="setURL('newTypePage.php')">
+					<span class="glyphicon glyphicon-upload">New Type</span>
 				</button>
 				<div>
 					FILTERS
@@ -82,14 +85,16 @@
 						<input type="range" min="0" max=<?php echo($maxShipping); ?> name="shippingSlider" onchange="showValueShipping(this.value)"/>
 						<span id="rangeShipping"><?php echo($maxShipping/2); ?></span></BR></BR>
 
-						Pick a color: <input type="color" name="color"/>
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Color" name="color"/>
+						</div>
 
 						<?php
-							$sql="SELECT `Type` FROM `Type`";
+							$sql="SELECT * FROM `Type`";
 							$result=mysqli_query($conn, $sql) or die(mysqli_error($conn));
 							echo("<select name='type'>");
 							while($row=mysqli_fetch_array($result)){
-								echo("<option value=".$row['Type'].">".$row['Type']."</option>");
+								echo("<option value=".$row['Id'].">".$row['Type']."</option>");
 							}
 							echo("</select>");
 						?>

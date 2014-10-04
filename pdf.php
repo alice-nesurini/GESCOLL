@@ -1,5 +1,5 @@
 <?php
-	/* Alice Mariotti-Nesurin
+	/* Alice Mariotti-Nesurini
 	 * 18.09.14
 	 * stampa PDF degli oggetti
 	 * con classe FPDF
