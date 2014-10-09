@@ -17,6 +17,7 @@
 		<link rel="shortcut icon" href="img/icon.png">
 	</head>
 	<body>
+		<center>
 		<script type="text/javascript">
 		function showValuePrice(newValue){
 			//fonte: http://webtutsdepot.com/2010/04/24/html-5-slider-input-tutorial/
@@ -50,10 +51,10 @@
 			
 			<div id="navigation" style="margin-top:2%;">
 				<button type="submit" class="btn btn-default btn-lg btn-block" onClick="setURL('newPage.php')">
-					<span class="glyphicon glyphicon-upload">New object</span>
+					<span class="glyphicon glyphicon-plus">New object</span>
 				</button>
 				<button type="submit" class="btn btn-default btn-lg btn-block" onClick="setURL('newTypePage.php')">
-					<span class="glyphicon glyphicon-upload">New Type</span>
+					<span class="glyphicon glyphicon-plus">New Type</span>
 				</button>
 				<div>
 					FILTERS
@@ -70,7 +71,7 @@
 							$maxShipping=($row['MAX(Shipping)']);
 						}
 					?>
-					<form action="filterSearch.php" method="POST">
+					<form action="filterSearch.php" method="POST" target="frameContent">
 						<div class="input-group">
 							<input type="text" class="form-control" placeholder="Name" name="name"/>
 						</div>
@@ -93,6 +94,7 @@
 							$sql="SELECT * FROM `Type`";
 							$result=mysqli_query($conn, $sql) or die(mysqli_error($conn));
 							echo("<select name='type'>");
+							echo("<option value='all' selected>All Types</option>");
 							while($row=mysqli_fetch_array($result)){
 								echo("<option value=".$row['Id'].">".$row['Type']."</option>");
 							}
@@ -104,7 +106,7 @@
 			</div>
 			<div class="content">
 				<div>
-					<iframe src="panelContent.php" width=50% height=100% frameBorder="0" id="frameContent" name="frameContent">Browser not compatible with iFrame.</iframe>
+					<iframe src="panelContent.php" width=70% height=85% frameBorder="0" id="frameContent" name="frameContent">Browser not compatible with iFrame.</iframe>
 				</div>
 			</div>
 			<div id="extra">
@@ -114,5 +116,6 @@
 				<center><p>&#169; Alice Nesurini - September - October 2014</p></center>
 			</div>
 		</div>
+	</center>
 	</body>
 </html>

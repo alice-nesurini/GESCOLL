@@ -26,8 +26,12 @@
 					echo("Nation: <input type='text' class='form-control' name='nation' value='".$row['Nation']."' style='width:50%;'></br>");
 					echo("Address: <input type='text' class='form-control' name='address' value='".$row['Address']."' style='width:50%;'></br>");
 					echo("<button name='submitUpdate' type='submit' class='glyphicon glyphicon-ok btn-sm'>Save</button>");
-					echo("<button name='cancelBtn' onClick='window.open(\"panel.php\", \"_parent\")' class='glyphicon glyphicon-remove btn-sm'>Cancel</button>");
+					//echo("<button name='cancelBtn' onClick='window.open(\"meView.php\", \"_parent\")' class='glyphicon glyphicon-remove btn-sm'>Cancel</button>");
 					echo("</form>");
+					echo('<form action="redirectMeView.php" method="POST">');
+					echo('<button name="cancelBtn" type="submit" class="glyphicon glyphicon-remove btn-sm">Cancel</button>');
+					echo('</form>');
+					
 				}
 			?>
 		</div>

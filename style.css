@@ -17,7 +17,8 @@
     src: url(fonts/Movie_Times.ttf);
 }
 body {
-    background-image: url("img/bg4.jpg");
+    /*background-image: url("img/bg1.jpg");*/
+    background-color: #C2EBFF;
 }
 form{
     /*text-align: center;

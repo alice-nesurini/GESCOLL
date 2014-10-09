@@ -7,6 +7,8 @@ body {
     font: 76 % arial,
     sans - serif;
     text - align: center;
+    /*background-image: url("img/bg1.jpg");*/
+    background-color: #C2EBFF;
 }
 
 p {
@@ -14,7 +16,7 @@ p {
 }
 
 a {
-    text - decoration: none;
+    text-ecoration: none;
     color: #000;
     padding:5px;
 }
@@ -26,33 +28,34 @@ div #header {
 
 div #header h1 {
     height: 80px;
-    line - height: 80px;
+    line-height: 80px;
     padding - left: 10px;
    margin: 0;
 }
 
 div #container {
-    text - align: left;
+    text-align: left;
     width: 700px;
     margin: 0 auto;
     /*background: GhostWhite;*/
 }
 
 div #content p {
-    margin - top: 30px;
-    line - height: 1.4;
+    margin-top: 30px;
+    line-height: 1.4;
 }
 
 div #navigation {
     margin - top: 70px;
-    background:#F6F0E0;
+    /*background:#F6F0E0;*/
     float: left;
     width: 150px;
-    margin - left: -150px;
+    /*margin - left: -150px;*/
+    margin-left: 5%;
 }
 
 div #navigation ul {
-    list - style - type: none;
+    list-style-type: none;
     margin: 15px 0;
     padding: 0;
 }
@@ -70,7 +73,7 @@ div #extra {
 }
 
 div #footer {
-    background:#BFBD93;
+    /*background:#BFBD93;*/
     clear: left;
     width: 100 % ;
 }

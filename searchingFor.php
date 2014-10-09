@@ -10,20 +10,31 @@
 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="style_template.css" rel="stylesheet">
 	</head>
-	<body></body>
+	<body>
+		<h1>Searching</h1>
+	</body>
 </html>
 <?php
 	$_SESSION['searchIn']="search";
 	echo("<div style='margin-left: 5%; margin-top: 5%''>");
 	$conn=mysqli_connect("localhost", "root", "root", "gescoll") or die("error");
 	$nameUser=$_SESSION['name'];
-	$query="SELECT * FROM `object` WHERE selling=0";
+	$start=0;
+	$limit=5;
+	if(isset($_GET['id'])){
+	    $id=$_GET['id'];
+	    $start=($id-1)*$limit;
+	}
+	else{
+		$id=1;
+	}
+	$query="SELECT * FROM `object` WHERE selling=0 ORDER BY CreationTime DESC LIMIT $start, $limit";
 	$result=mysqli_query($conn, $query);
 	echo("<TABLE width=100%>");
 	while($row=mysqli_fetch_array($result)){
 		echo("<tr style='width:5%;'>");
-		$id=$row['Id'];
-		$queryPhoto="SELECT * FROM Photo WHERE Id_Object_Cover='$id'";
+		$idObj=$row['Id'];
+		$queryPhoto="SELECT * FROM Photo WHERE Id_Object_Cover='$idObj'";
 		$resultPhoto=mysqli_query($conn, $queryPhoto) or die(mysqli_error($conn));
 		if(mysqli_num_rows($resultPhoto)==0){
 			echo('<td style="border: 1px solid black; max-width:150px;" rowspan=5>No Image</td>');
@@ -36,17 +47,26 @@
 		echo("<td style='border: 1px solid black;' colspan=2><b>".$row['Name']."</b></td>");
 		echo("</tr>");
 		echo("<tr>");
-		echo("<td style='border: 1px solid black;' rowspan=2>".$row['Desc']."</td>");
-		echo("<td style='border: 1px solid black;'>Price: ".$row['Price']."</td>");
+		echo("<td style='border: 1px solid black;' rowspan=2>".$row['Desc']."</br>".$row['Color']."</td>");
+		if($row['Price']==0){
+			echo("<td style='border: 1px solid black;'>This object is free</td>");
+		}
+		else{
+			$priceDecimal=number_format((float)$row['Price'], 2, '.', '');
+			echo("<td style='border: 1px solid black;'>Price: ".$priceDecimal." chf</td>");
+		}
+		//$priceDecimal=number_format((float)$row['Price'], 2, '.', '');
+		//echo("<td style='border: 1px solid black;'>Price: ".$row['Price'].".- chf</td>");
 		echo("</tr>");
 		echo("<tr>");
 		if($row['Shipping']==0){
-			echo("<td style='border: 1px solid black;'>No shipping</td>");
+			echo("<td style='border: 1px solid black;'>No shipping tax</td>");
 		}
 		else{
-			echo("<td style='border: 1px solid black;'>Shipping: ".$row['Shipping']." fr.-</td>");
+			$shippingDecimal=number_format((float)$row['Shipping'], 2, '.', '');
+			echo("<td style='border: 1px solid black;'>Shipping: ".$row['Shipping']." chf</td>");
 		}
-		echo("<td rowspan=2 style='visibility:hidden;'><form target='_blank' action='pdf.php' method='POST'><button name='pdfButton' type='submit' value=".$row['Id']." class='glyphicon glyphicon-file'></button></form></td>");
+		echo("<td rowspan=2><form target='_blank' action='pdf.php' method='POST'><button name='pdfButton' type='submit' value=".$row['Id']." class='glyphicon glyphicon-file'>pdf</button></form></td>");
 		echo("</tr>");
 		echo("<tr>");
 		$type=$row['Type'];
@@ -59,7 +79,7 @@
 		echo("<td style='border: 1px solid black;'>Searching for this object</td>");
 		echo("</tr>");
 		echo("<tr>");
-		$queryPhoto="SELECT * FROM Photo WHERE Id_Object='$id'";
+		$queryPhoto="SELECT * FROM Photo WHERE Id_Object='$idObj'";
 		$resultPhoto=mysqli_query($conn, $queryPhoto) or die(mysqli_error($conn));
 		if(mysqli_num_rows($resultPhoto)==0){
 			echo('<td style="border: 1px solid black; max-width:150px;" colspan=3>No Images</td>');
@@ -72,5 +92,23 @@
 		echo("</tr>");
 	}
 	echo("</TABLE>");
+	$rows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `object` WHERE selling=0"));
+	$total = ceil($rows / $limit);
+
+	if($id>1){
+		echo "<a href='?id=".($id-1)."' class='button'>PREVIOUS</a>";
+	}
+	if($id!=$total){
+		echo "<a href='?id=".($id+1)."' class='button'>NEXT</a>";
+	}
+	echo("<ul class='page'>");
+	for($i=1; $i<=$total; $i++){
+	    if($i==$id){
+	        echo("<li style='list-style: none; display:inline-block;' class='current'>".$i."</li>");
+	    }
+	    else{
+	        echo("<li style='list-style: none; display:inline-block;'><a href='?id=".$i."'>".$i."</a></li>");
+	    }
+	}
 	echo("</div>");
 ?>

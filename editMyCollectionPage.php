@@ -1,8 +1,8 @@
 <?php
 	session_start();
 	/* Alice Mariotti-Nesurini
-	 * 17.09.14
-	 * Gestione opzioni utente
+	 * 08.10.14
+	 * Gestione mia collezione
 	 */
 ?>
 <html>
@@ -34,7 +34,7 @@
 					}
 					while($rowPhoto=mysqli_fetch_array($resultPhoto)){
 						echo('<td style="border: 1px solid black; max-width:150px;" rowspan=5><b>Cover</br><img src="data:image/png;base64,'.base64_encode($rowPhoto['Photo']).'" width="150px"></b></td>');
-						echo("<form action='deletePhoto.php' method='POST'><button name='photoButton' type='submit' value=".$rowPhoto['Id']." class='glyphicon glyphicon-remove'></button></form>");
+						echo("<form action='deleteMyCollectionPhoto.php' method='POST'><button name='photoButton' type='submit' value=".$rowPhoto['Id']." class='glyphicon glyphicon-remove'></button></form>");
 					}
 
 
@@ -49,10 +49,10 @@
 					}
 					while($rowPhoto=mysqli_fetch_array($resultPhoto)){
 						echo('<td style="border: 1px solid black;"><b>Other images</br><img src="data:image/png;base64,'.base64_encode($rowPhoto['Photo']).'" width="145px"></b></td>');
-						echo("<form action='deletePhoto.php' method='POST'><button name='photoButton' type='submit' value=".$rowPhoto['Id']." class='glyphicon glyphicon-remove'></button></form>");
+						echo("<form action='deleteMyCollectionPhoto.php' method='POST'><button name='photoButton' type='submit' value=".$rowPhoto['Id']." class='glyphicon glyphicon-remove'></button></form>");
 					}
 
-					echo("<form action='updateObject.php' method='POST' enctype='multipart/form-data'>");
+					echo("<form action='updateMyCollection.php' method='POST' enctype='multipart/form-data'>");
 					if($showUpload){
 						echo('<label>Cover: </label><input type="file" name="image"/>');
 					}
@@ -60,11 +60,9 @@
 					echo("Name: <input type='text' class='form-control' name='name' value='".$row['Name']."' style='width:50%;'></br>");
 					echo("Cod: <input type='number' step='0.01' min='0' class='form-control' name='cod' value='".$row['Cod']."' style='width:50%;'></br>");
 					echo("Color: <input type='text' class='form-control' name='color' value='".$row['Color']."' style='width:50%;'></br>");
-					echo("Price: <input type='number' step='0.01' min='0' class='form-control' name='price' value='".$row['Price']."' style='width:50%;'></br>");
-					echo("Shipping: <input type='number' step='0.01' min='0' class='form-control' name='shipping' value='".$row['Shipping']."' style='width:50%;'></br>");
 					echo("Desc: <input type='text' class='form-control' name='desc' value='".$row['Desc']."' style='width:50%;'></br>");
-					//echo("Selling: <input type='text' class='form-control' name='selling' value='".$row['Selling']."' style='width:50%;'></br>");
-					
+					echo("Selling: <input type='text' class='form-control' disabled name='selling' value='My Collection' style='width:50%;'></br>");
+					/*
 					echo("<select name='selling'>");
 					if($row['Selling']==1){
 						echo("<option selected='selected' value='1'>Selling this object</option>");
@@ -74,7 +72,7 @@
 						echo("<option value='1'>Selling this object</option>");
 						echo("<option selected='selected' value='0'>Searching for this object</option>");
 					}
-					echo("</select>");
+					echo("</select>");*/
 
 					/*if($row['Selling']==1){
 						echo("Selling: <input type='text' class='form-control' name='selling' value='Selling this object' style='width:50%;'></br>");

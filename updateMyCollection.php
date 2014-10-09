@@ -3,12 +3,9 @@
 	$conn=mysqli_connect("localhost", "root", "root", "gescoll") or die("error");
 	$name=$_REQUEST['name'];
 	$cod=$_REQUEST['cod'];
-	$price=$_REQUEST['price'];
-	$shipping=$_REQUEST['shipping'];
 	$color=$_REQUEST['color'];
 	$desc=$_REQUEST['desc'];
 	$type=$_REQUEST['type'];
-	$selling=$_REQUEST['selling'];
 	$id=$_SESSION['idObjEdit'];
 
 	if(empty($price)){
@@ -42,12 +39,12 @@
 	}
 
 	if(empty($cod)){
-		$query="UPDATE `Object` SET Name='$name', Cod=NULL, Price='$price', Shipping='$shipping', Color='$color', `Desc`='$desc', Type='$type', Selling='$selling', CreationTime=NOW() WHERE id='$id'";
+		$query="UPDATE `Object` SET Name='$name', Cod=NULL, Color='$color', `Desc`='$desc', Type='$type', Selling=2, CreationTime=NOW() WHERE id='$id'";
 	}
 	else if(!(empty($cod))){
-		$query="UPDATE `Object` SET Name='$name', Cod='$cod', Price='$price', Shipping='$shipping', Color='$color', `Desc`='$desc', Type='$type', Selling='$selling', CreationTime=NOW() WHERE id='$id'";
+		$query="UPDATE `Object` SET Name='$name', Cod='$cod', Color='$color', `Desc`='$desc', Type='$type', Selling=2, CreationTime=NOW() WHERE id='$id'";
 	}
 	$result=mysqli_query($conn, $query);
 	//echo($query);
-	header("Location: editObjectPage.php");
+	header("Location: myCollectionPage.php");
 ?>

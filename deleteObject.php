@@ -13,7 +13,22 @@
 			$r=mysqli_query($conn, $deletePhotoQuery);
 		}
 	}
+	$collection="SELECT * FROM Object WHERE Id='$submitId'";
+	$isMyCollection=mysqli_query($conn, $collection);
+	while($row=mysqli_fetch_array($isMyCollection)){
+		if($row['Selling']==2){
+			$myCollection=true;
+		}
+		else{
+			$myCollection=false;
+		}
+	}
 	$query="DELETE FROM Object WHERE Id='$submitId'";
 	$result=mysqli_query($conn, $query);
-	header("Location: panelContent.php");
+	if($myCollection==true){
+		header("Location: myCollectionPage.php");
+	}
+	else{
+		header("Location: panelContent.php");
+	}
 ?>

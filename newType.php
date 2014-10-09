@@ -10,5 +10,7 @@
 	$query="INSERT INTO Type VALUES(NULL, '$nameType')";
 	$result=mysqli_query($conn, $query) or die(mysqli_error($conn));
 	//echo("<script>window.location.href(http:\\localhost\GESCOLL\GESCOLL\panel.php)</script>");
-	header("Location: panelContent.php");
+	//header("Location: panelContent.php");
+	//echo("<script>window.location='panel.php';</script>");
+	echo("<script>window.open('panel.php', '_parent');</script>");
 ?>
