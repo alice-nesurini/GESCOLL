@@ -50,7 +50,7 @@
 	$pdf->Ln();
 	$pdf->MultiCell(190, 10, "Name: ".$objName, 1, 1);
 	$y=$pdf->GetY();
-	$pdf->MultiCell(100, 30, "Description: ".$objDesc, 1, 1);
+	$pdf->MultiCell(100, 30, "Description: ".$objDesc.", ".$objColor, 1, 1);
 	$pdf->SetY($y);
 	$pdf->SetX(110);
 	$pdf->MultiCell(90, 10, "Code: ".$objCod, 1, 1);

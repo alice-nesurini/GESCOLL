@@ -10,7 +10,7 @@
 					<input type="text" class="form-control" name="name" placeholder="Name" style="width:50%;">
 					<input type="text" class="form-control" name="description" placeholder="Description" style="width:50%;">
 					<input type="text" class="form-control" name="color" placeholder="Color" style="width:50%;">
-					<input type='number' step='0.01' min='0' class="form-control" name="cod" placeholder="Cod" style="width:50%;">
+					<input type='number' step='0.01' min='0' max='2147483645' class="form-control" name="cod" placeholder="Cod" style="width:50%;">
 					</br>
 					<input disabled type="text" class="form-control" value="My Collection" name="selling" placeholder="Cod" style="width:50%;">
 			       	<select name="type">

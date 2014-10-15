@@ -64,7 +64,7 @@
 		echo("<td ><form action='editMyCollectionPage.php' method='POST'><button name='editButton' type='submit' value=".$row['Id']." class='glyphicon glyphicon-edit btn-block'> Edit</button></form></td>");
 		echo("</tr>");
 		echo("<tr>");
-		echo("<td style='border: 1px solid black;' rowspan=2>".$row['Desc']."</td>");
+		echo("<td style='border: 1px solid black;' rowspan=2>".$row['Desc']."</br>".$row['Color']."</td>");
 		/*if($row['Price']==0){
 			echo("<td style='border: 1px solid black;'>This object is free</td>");
 		}

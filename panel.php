@@ -86,9 +86,19 @@
 						<input type="range" min="0" max=<?php echo($maxShipping); ?> name="shippingSlider" onchange="showValueShipping(this.value)"/>
 						<span id="rangeShipping"><?php echo($maxShipping/2); ?></span></BR></BR>
 
-						<div class="input-group">
+						<?php
+							$sql="SELECT DISTINCT Color FROM `Object`";
+							$result=mysqli_query($conn, $sql) or die(mysqli_error($conn));
+							echo("<select name='color'>");
+							echo("<option value='all' selected>All Colors</option>");
+							while($row=mysqli_fetch_array($result)){
+								echo("<option value=".$row['Color'].">".$row['Color']."</option>");
+							}
+							echo("</select>");
+						?>
+						<!--<div class="input-group">
 							<input type="text" class="form-control" placeholder="Color" name="color"/>
-						</div>
+						</div>-->
 
 						<?php
 							$sql="SELECT * FROM `Type`";
@@ -98,6 +108,11 @@
 							while($row=mysqli_fetch_array($result)){
 								echo("<option value=".$row['Id'].">".$row['Type']."</option>");
 							}
+							echo("</select>");
+							echo("<select name='selling'>");
+							echo("<option value='all' selected>All</option>");
+							echo("<option value=0>Searching for</option>");
+							echo("<option value=1>Selling</option>");
 							echo("</select>");
 						?>
 						<button type="submit" class="btn btn-default">Search</button>

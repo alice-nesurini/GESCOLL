@@ -58,7 +58,7 @@
 					}
 					echo('</label><input type="file" name="otherImages[]" multiple="multiple"/>');
 					echo("Name: <input type='text' class='form-control' name='name' value='".$row['Name']."' style='width:50%;'></br>");
-					echo("Cod: <input type='number' step='0.01' min='0' class='form-control' name='cod' value='".$row['Cod']."' style='width:50%;'></br>");
+					echo("Cod: <input type='number' step='0.01' min='0' max='2147483645' class='form-control' name='cod' value='".$row['Cod']."' style='width:50%;'></br>");
 					echo("Color: <input type='text' class='form-control' name='color' value='".$row['Color']."' style='width:50%;'></br>");
 					echo("Desc: <input type='text' class='form-control' name='desc' value='".$row['Desc']."' style='width:50%;'></br>");
 					echo("Selling: <input type='text' class='form-control' disabled name='selling' value='My Collection' style='width:50%;'></br>");

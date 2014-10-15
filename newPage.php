@@ -10,9 +10,9 @@
 					<input type="text" class="form-control" name="name" placeholder="Name" style="width:50%;">
 					<input type="text" class="form-control" name="description" placeholder="Description" style="width:50%;">
 					<input type="text" class="form-control" name="color" placeholder="Color" style="width:50%;">
-					<input type="number" step="0.01" min="0" class="form-control" name="price" placeholder="Price" style="width:50%;">
-					<input type="number" step="0.01" min="0" class="form-control" name="shipping" placeholder="Shipping" style="width:50%;">
-					<input type="number" step="0.01" min="0" class="form-control" name="cod" placeholder="Cod" style="width:50%;">
+					<input type="number" step="0.01" min="0" max="2147483646" class="form-control" name="price" placeholder="Price" style="width:50%;">
+					<input type="number" step="0.01" min="0" max="2147483646" class="form-control" name="shipping" placeholder="Shipping" style="width:50%;">
+					<input type="number" step="0.01" min="0" max="2147483646" class="form-control" name="cod" placeholder="Cod" style="width:50%;">
 					</br>
 					<select name="selling">
 			       		<option value="Selling">Selling</option>

@@ -40,7 +40,7 @@
 				}
 				$sql="SELECT * FROM Object WHERE Id_User=$idUser AND (Selling=0 OR Selling=1) ORDER BY CreationTime DESC LIMIT $start, $limit";
 				$result=mysqli_query($conn, $sql) or die(mysqli_error($conn));
-				echo("<TABLE width=100%>");
+				echo("<TABLE width=100%'>");
 				while($row=mysqli_fetch_array($result)){
 					echo("<tr style='width:5%;'>");
 					$idObj=$row['Id'];
@@ -64,7 +64,7 @@
 					}
 					else{
 						$priceDecimal=number_format((float)$row['Price'], 2, '.', '');
-						echo("<td style='border: 1px solid black;'>Price: ".$priceDecimal."chf</td>");
+						echo("<td style='border: 1px solid black;'>Price: ".$priceDecimal." chf</td>");
 					}
 					echo("<td ><form action='deleteObject.php' method='POST'><button onclick='return confirm(\"Are you sure you want to delete this item?\");' name='submitName' type='submit' value=".$row['Id']." class='glyphicon glyphicon-remove btn-block'> Remove</button></form></td>");
 					echo("</tr>");
